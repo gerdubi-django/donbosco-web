@@ -1,7 +1,7 @@
 <?php
-require_once '../functions/view_control_functions.php';
-require_once '../functions/export_excel.php';
-require_once '../functions/auth.php';
+require_once __DIR__ . '/../functions/view_control_functions.php';
+require_once __DIR__ . '/../functions/export_excel.php';
+require_once __DIR__ . '/../functions/auth.php';
 
 startAuthSession();
 
