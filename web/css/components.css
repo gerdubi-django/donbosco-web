@@ -1,69 +1,122 @@
-/* component styles */
+/* Define base button style with depth and smooth transitions. */
 .btn {
-  display: inline-block;
-  background: #2563eb;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   color: #fff;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
   font-weight: 600;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: background 0.3s;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
 }
-.btn:hover { background: #1e40af; }
+
+/* Lift button on hover for a modern interactive feel. */
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+  box-shadow: 0 14px 28px rgba(30, 64, 175, 0.4);
+}
+
+/* Create an alternate button variant for secondary actions. */
+.btn--secondary {
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: none;
+}
+
+/* Keep utility block button centered and content-width based. */
 .btn--block {
   display: block;
   width: max-content;
   margin: var(--spacing-md) auto 0;
 }
+
+/* Style informational cards with glassmorphism and smooth animations. */
 .card,
 .payment-card {
-  background: #fff;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-  padding: var(--spacing-md);
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  backdrop-filter: blur(5px);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 1.15rem;
   text-align: center;
-  transition: transform 0.5s, box-shadow 0.5s;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
+
+/* Add elevated hover state for cards and JS-driven hover class. */
 .card:hover,
 .payment-card:hover,
 .card.is-hover,
 .payment-card.is-hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-strong);
 }
+
+/* Set icon size defaults used across cards and sections. */
 .icon {
   width: 1.5rem;
   height: 1.5rem;
 }
+
+/* Support both icon modifiers used in the markup. */
+.icon.large,
 .icon--large {
   width: 3rem;
   height: 3rem;
   margin: 0 auto var(--spacing-sm);
+  color: var(--color-primary);
 }
+
+/* Standardize payment logos inside card headers. */
 .card-img {
-  height: 6rem;
-  width: 6rem;
+  height: 5.4rem;
+  width: 5.4rem;
   object-fit: contain;
   margin: 0 auto var(--spacing-sm);
 }
+
+/* Preserve social brand colors while refining hover feedback. */
 .facebook { color: #1d4ed8; }
 .instagram { color: #db2777; }
-/* position buttons at card bottom */
-.payment-card{display:flex;flex-direction:column;align-items:center;position:relative;}
-.payment-card .btn{margin-top:auto;width:80%;margin-bottom:var(--spacing-sm);}
-.payment-card.row>div{display:flex;flex-direction:column;flex:1;align-items:center;text-align:center;}
+.facebook:hover,
+.instagram:hover { opacity: 0.82; }
 
-/* map container styles */
-.contact__map {
-  margin-top: var(--spacing-lg);
+/* Keep payment cards vertically aligned with button near bottom. */
+.payment-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
 
-.contact__map iframe {
-  display: block;
-  width: 100%;
-  height: 300px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  border-radius: 0.5rem;
-  border: none;
+/* Keep payment action buttons with consistent card width. */
+.payment-card .btn {
+  margin-top: auto;
+  width: 82%;
+  margin-bottom: var(--spacing-sm);
 }
 
+/* Align rich row card text content while preserving spacing. */
+.payment-card.row > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  text-align: center;
+}
+
+/* Improve heading readability across all cards. */
+.card h3,
+.payment-card h3 {
+  margin-top: 0.55rem;
+  margin-bottom: 0.45rem;
+}
+
+/* Soften paragraph tone to improve visual hierarchy. */
+.card p,
+.payment-card p {
+  color: var(--color-muted);
+}

@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Route logical entry points through the single front controller.
+RewriteRule ^(ingresos|sistema-ingresos)/?$ index.php [L,QSA]
+
+# Serve existing files and directories directly.
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Route all other requests through the single front controller.
+RewriteRule ^ index.php [L,QSA]
