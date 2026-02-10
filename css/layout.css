@@ -1,204 +1,264 @@
-/* layout styles */
+/* Shared container to constrain width and center all sections. */
 .container {
-  width: 90%;
-  max-width: 1200px;
+  width: min(92%, 1180px);
   margin: 0 auto;
 }
+
+/* Build a translucent sticky navigation with blur and shadow. */
 .nav {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  background: #f3f4f6;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
 }
+
+/* Align logo and links while preserving responsive behavior. */
 .nav__content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--spacing-md);
+  min-height: var(--navbar-height);
   position: relative;
 }
+
+/* Keep logo dimensions consistent across breakpoints. */
 .nav__logo {
-  height: 3rem;
+  height: 3.2rem;
   width: auto;
 }
+
+/* Style menu toggle with compact focus-friendly appearance. */
 .nav__toggle {
-  background: none;
+  background: transparent;
   border: 0;
   cursor: pointer;
+  color: var(--color-primary-dark);
 }
+
+/* Configure mobile menu as a floating panel. */
 .nav__list {
   list-style: none;
   margin: 0;
-  padding: var(--spacing-md) 0;
+  padding: 1rem;
   display: none;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: var(--spacing-sm);
+  gap: 0.85rem;
   font-weight: 600;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  box-shadow: var(--shadow-soft);
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
-  text-align: center;
 }
+
+/* Apply an interactive hover color to navigation links. */
 .nav__link:hover {
-  color: #1d4ed8;
+  color: var(--color-primary);
 }
+
+/* Display mobile menu when JS toggles this state class. */
 .nav__list--open {
   display: flex;
 }
+
+/* Switch the menu to inline desktop navigation. */
 @media (min-width: 768px) {
   .nav__toggle { display: none; }
+
   .nav__list {
     position: static;
     display: flex;
     flex-direction: row;
-    gap: var(--spacing-md);
+    gap: 1.25rem;
     background: transparent;
+    box-shadow: none;
     padding: 0;
-    height: auto;
   }
 }
+
+/* Reserve viewport-height sections while accounting for the fixed header. */
 section {
   min-height: 100vh;
-  padding: var(--spacing-lg) 0;
+  padding: var(--spacing-xl) 0;
   scroll-margin-top: var(--navbar-height);
 }
+
+/* Offset hero top padding to avoid overlap with sticky navigation. */
 section:first-of-type {
-  padding-top: calc(var(--navbar-height) + var(--spacing-lg));
+  padding-top: calc(var(--navbar-height) + var(--spacing-xl));
 }
 
-
-
+/* Layer hero content over a darkened, animated background image. */
 .hero {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  /* eliminamos el url directo del background para usar ::before */
-  background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
   color: #fff;
-  overflow: hidden; /* para recortar el zoom */
+  overflow: hidden;
+  isolation: isolate;
 }
 
+/* Render the animated background image in a pseudo-layer. */
 .hero::before {
-  content: "";
+  content: '';
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: url('../img/hero.jpg') center/cover no-repeat;
-  transform-origin: center center;
+  inset: 0;
+  background:
+    linear-gradient(150deg, rgba(15, 23, 42, 0.85), rgba(30, 64, 175, 0.72)),
+    url('../img/hero.jpg') center / cover no-repeat;
+  z-index: -2;
+  animation: subtleZoom 26s ease-in-out infinite alternate;
+}
+
+/* Add a decorative gradient glow for a modern visual finish. */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: auto -20% -35% -20%;
+  height: 300px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.32), rgba(251, 191, 36, 0));
   z-index: -1;
-  animation: subtleZoom 30s ease-in-out infinite alternate;
 }
 
+/* Animate hero image zoom slowly to create depth. */
 @keyframes subtleZoom {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.05);
-  }
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
 }
 
+/* Use serif typography for the main title for brand identity. */
 .hero h1 {
-  position: relative;
+  margin: 0;
   font-family: 'Playfair Display', serif;
-  font-size: 3.5rem;
-  z-index: 1;
+  font-size: clamp(2.5rem, 7vw, 4.9rem);
+  line-height: 1.1;
 }
 
+/* Improve hero subtitle readability and line length. */
 .hero p {
-  position: relative;
-  font-size: 1.25rem;
-  z-index: 1;
+  margin: 0;
+  max-width: 680px;
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
 }
 
-@media (min-width: 768px) {
-  .hero h1 {
-    font-size: 4.5rem;
-  }
-}
-
+/* Space hero children consistently for CTA hierarchy. */
 .hero__content {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: var(--spacing-lg);
-  z-index: 1;
+  gap: 1.1rem;
 }
 
+/* Keep intro paragraphs centered and readable with balanced width. */
 .intro {
   margin: 0 auto var(--spacing-lg);
+  max-width: 850px;
   text-align: justify;
+  color: var(--color-muted);
 }
 
-
+/* Configure section grids with adaptive cards. */
 .info__grid,
 .payment__grid {
   display: grid;
-  gap: var(--spacing-lg);
+  gap: 1.25rem;
 }
-.info__grid { grid-template-columns: 1fr; }
+
+/* Start with one-column layout for mobile devices. */
+.info__grid,
 .payment__grid { grid-template-columns: 1fr; }
+
+/* Expand to multi-column cards on larger displays. */
 @media (min-width: 768px) {
-  .info__grid { grid-template-columns: repeat(3,1fr); }
-  .payment__grid { grid-template-columns: repeat(3,1fr); }
+  .info__grid,
+  .payment__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
+
+/* Stretch highlighted payment row full width with responsive direction. */
 .row {
-  grid-column: 1/-1;
+  grid-column: 1 / -1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md);
 }
+
+/* Align row content to the left on desktop for better scanning. */
 @media (min-width: 768px) {
   .row {
     flex-direction: row;
     text-align: left;
   }
 }
+
+/* Center solidarity section and keep media aligned. */
 .solidarity__content {
   text-align: center;
   margin: 0 auto;
 }
+
+/* Style embedded video with modern radius and soft elevation. */
 .video {
   width: 100%;
   max-width: 850px;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  display: block;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
   margin: 0 auto;
 }
+
+/* Keep contact block centered and visually separated from previous sections. */
 .contact {
-  background: #f9fafb;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4), #eef2ff 80%);
   text-align: center;
-  padding-top: 0!important;
+  padding-top: 0 !important;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
-.contact .container{display:flex;flex-direction:column;justify-content:center;align-items:center;height:100%;}
+
+/* Stack contact content with intentional spacing. */
+.contact .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Align icons and text in contact entries. */
 .contact__item {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: var(--spacing-sm);
-  margin: var(--spacing-sm) 0;
+  gap: 0.5rem;
+  margin: 0.4rem 0;
+  flex-wrap: wrap;
 }
+
+/* Present social links as rounded icon buttons. */
 .social__links {
   margin-top: var(--spacing-lg);
   display: flex;
   justify-content: center;
-  gap: var(--spacing-lg);
+  gap: 1rem;
 }
-.facebook:hover { color: #1e40af; }
-.instagram:hover { color: #9d174d; }
+
+/* Prepare map wrapper with spacing from contact details. */
+.contact__map {
+  margin-top: var(--spacing-lg);
+}
+
+/* Round and elevate the map embed to match the new card style. */
+.contact__map iframe {
+  width: 100%;
+  height: 300px;
+  box-shadow: var(--shadow-soft);
+  border-radius: var(--radius-lg);
+  border: none;
+}
