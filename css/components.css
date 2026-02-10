@@ -31,9 +31,15 @@
   font-weight: 700;
 }
 
+
 .brand__logo {
   width: 42px;
   height: 42px;
+  object-fit: contain;
+}
+
+.nav__content > nav {
+  margin-left: auto;
 }
 
 .nav__list {
@@ -58,21 +64,41 @@
   display: none;
 }
 
+.hero__media {
+  margin: 0;
+  border-radius: calc(var(--radius) + 6px);
+  overflow: hidden;
+  border: 1px solid rgba(151, 179, 255, 0.35);
+  box-shadow: var(--shadow);
+  min-height: 380px;
+}
+
+.hero__media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 16 / 10;
+}
+
+.hero__text {
+  background: linear-gradient(160deg, rgba(18, 30, 70, 0.88), rgba(11, 19, 44, 0.88));
+  border: 1px solid rgba(151, 179, 255, 0.2);
+  border-radius: var(--radius);
+  padding: clamp(1.15rem, 3vw, 2.1rem);
+  box-shadow: var(--shadow);
+}
+
 .hero__text h1 {
-  font-size: clamp(2.2rem, 5vw, 4.2rem);
-  margin: 0.7rem 0 1.25rem;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  margin: 0.7rem 0 1rem;
 }
 
 .hero__actions {
-  margin-top: 1.7rem;
+  margin-top: 1.5rem;
   display: flex;
   gap: 0.8rem;
   flex-wrap: wrap;
-}
-
-.hero__visual img {
-  width: 100%;
-  filter: drop-shadow(0 30px 60px rgba(58, 119, 246, 0.5));
 }
 
 .section-heading {
@@ -149,6 +175,9 @@
     background: transparent;
     border: 0;
     padding: 0.25rem;
+    margin-left: auto;
+    align-items: flex-end;
+    justify-content: center;
   }
 
   .nav__toggle span {
@@ -160,16 +189,95 @@
   .nav__list {
     position: absolute;
     top: 78px;
-    right: 4vw;
+    right: 3vw;
+    left: 3vw;
     display: none;
     flex-direction: column;
-    padding: 1rem;
+    padding: 0.95rem;
     border-radius: 12px;
     background: rgba(9, 16, 39, 0.97);
     border: 1px solid rgba(151, 179, 255, 0.2);
+    box-shadow: var(--shadow);
   }
 
   .nav__list.is-open {
     display: flex;
+  }
+
+  .hero__media {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .brand span {
+    font-size: 0.92rem;
+  }
+
+  .hero__text {
+    padding: 1.1rem;
+  }
+
+  .hero__actions {
+    width: 100%;
+  }
+
+  .hero__actions .btn {
+    flex: 1 1 180px;
+  }
+
+  .video-wrap iframe,
+  .contact__map iframe {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 430px) {
+  .nav__content {
+    min-height: 70px;
+  }
+
+  .brand {
+    gap: 0.5rem;
+  }
+
+  .brand__logo {
+    width: 34px;
+    height: 34px;
+  }
+
+  .brand span {
+    max-width: 150px;
+    line-height: 1.1;
+    font-size: 0.82rem;
+  }
+
+  .nav__list {
+    top: 70px;
+    right: 2.5vw;
+    left: 2.5vw;
+  }
+
+  .hero__media {
+    min-height: 235px;
+    border-radius: 14px;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    flex-basis: 100%;
+  }
+
+  .card,
+  .payment-card,
+  .solidarity,
+  .contact-card,
+  .contact__map {
+    padding: 1rem;
+  }
+
+  .video-wrap iframe,
+  .contact__map iframe {
+    min-height: 250px;
   }
 }
