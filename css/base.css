@@ -8,6 +8,7 @@
   --primary-strong: #357cf3;
   --radius: 18px;
   --shadow: 0 22px 50px rgba(7, 12, 38, 0.45);
+  --nav-height: 78px;
 }
 
 * {
@@ -16,6 +17,8 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: var(--nav-height);
 }
 
 body {
@@ -24,6 +27,7 @@ body {
   background: radial-gradient(circle at 10% 10%, #142759, var(--bg) 45%), var(--bg);
   color: var(--text);
   line-height: 1.65;
+  overflow-y: auto;
 }
 
 h1,

@@ -6,6 +6,11 @@
 .section {
   padding: 5.5rem 0;
   position: relative;
+  min-height: calc(100svh - var(--nav-height));
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
 }
 
 .section--soft {
@@ -14,7 +19,7 @@
 }
 
 .hero {
-  min-height: 92vh;
+  min-height: calc(100svh - var(--nav-height));
   display: grid;
   align-items: center;
 }
@@ -66,8 +71,8 @@
   }
 
   .hero {
-    min-height: auto;
-    padding-top: 7rem;
+    min-height: calc(100svh - var(--nav-height));
+    padding-top: 0;
   }
 }
 
@@ -93,6 +98,6 @@
   }
 
   .hero {
-    padding-top: 6rem;
+    min-height: calc(100svh - var(--nav-height));
   }
 }
