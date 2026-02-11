@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>Admisión</title>
+  <circle cx="32" cy="32" r="30" fill="#0e1d48" />
+  <rect x="18" y="14" width="28" height="36" rx="4" fill="#7cc7ff"/>
+  <rect x="24" y="12" width="16" height="6" rx="3" fill="#a6ddff"/>
+  <path fill="#0e1d48" d="M24 26h16v3H24zm0 7h16v3H24zm0 7h10v3H24z"/>
+  <path fill="#80cc93" d="m37 42 3 3 6-7 2 2-8 9-5-5z"/>
+</svg>

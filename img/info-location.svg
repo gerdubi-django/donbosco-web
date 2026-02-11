@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>Ubicación</title>
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9cd2ff" />
+      <stop offset="1" stop-color="#4f86ff" />
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="#0e1d48" />
+  <path fill="url(#g1)" d="M32 10c-8.6 0-15.5 6.9-15.5 15.5 0 10.8 13.4 25.4 14 26 .4.4 1 .4 1.4 0 .6-.6 14-15.2 14-26C47.5 16.9 40.6 10 32 10Zm0 21.5a6 6 0 1 1 0-12 6 6 0 0 1 0 12Z"/>
+</svg>

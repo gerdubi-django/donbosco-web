@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>Matrícula y horarios</title>
+  <circle cx="32" cy="32" r="30" fill="#0e1d48" />
+  <circle cx="23" cy="24" r="6" fill="#7cc7ff"/>
+  <circle cx="41" cy="24" r="6" fill="#9cd2ff"/>
+  <path fill="#80cc93" d="M14 45c1.3-6.4 6.8-11 13.4-11h9.2c6.6 0 12.1 4.6 13.4 11H14z"/>
+  <rect x="26" y="13" width="12" height="4" rx="2" fill="#a6ddff"/>
+</svg>
