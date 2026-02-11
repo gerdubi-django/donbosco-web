@@ -138,9 +138,32 @@
 }
 
 .payment-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  padding-top: 2rem;
+}
+
+.payment-card__icon {
+  position: absolute;
+  top: -14px;
+  left: -14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(12, 24, 58, 0.96);
+  border: 1px solid rgba(151, 179, 255, 0.4);
+  box-shadow: 0 8px 18px rgba(4, 8, 18, 0.35);
+}
+
+.payment-card__icon img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
 }
 
 .video-wrap {
