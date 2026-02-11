@@ -147,6 +147,14 @@
   height: 100%;
 }
 
+.payment-card__actions {
+  margin-top: auto;
+  width: 100%;
+  display: grid;
+  gap: 0.6rem;
+  justify-items: center;
+}
+
 .card--info {
   display: flex;
   flex-direction: column;
@@ -187,9 +195,8 @@
   object-fit: contain;
 }
 
-.payment-card .btn--ghost {
-  margin-top: auto;
-  align-self: flex-start;
+.payment-card__actions .btn {
+  width: min(100%, 220px);
 }
 
 .video-wrap {
